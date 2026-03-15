@@ -15,6 +15,7 @@
     var fh = typeof flangeSize === "function" ? flangeSize(h) : 0;
     var nw = typeof neckSize === "function" ? neckSize(w) : 0;
     var nh = typeof neckSize === "function" ? neckSize(h) : 0;
+        var orderNum = (document.getElementById("inOrderNum") || {}).value || "";
 
     fetch(SUPABASE_URL + "/rest/v1/drawings", {
       method: "POST",
@@ -31,7 +32,8 @@
         flange_w: fw,
         flange_h: fh,
         neck_w: nw,
-        neck_h: nh
+        neck_h: nh,
+            order_number: orderNum
       })
     }).catch(function (err) {
       console.warn("Activity log failed:", err);
